@@ -69,7 +69,7 @@ RELATIONSHIPS = {
 class OllamaCharacterAI:
     def __init__(self, base_url: str = "http://localhost:11434"):
         self.base_url = base_url
-        self.model = "angus"
+        self.model = "codellama:7b"
         self.context = {}
 
     async def generate_response(self, character_name: str, prompt: str) -> str:
