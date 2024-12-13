@@ -4,22 +4,19 @@ extends Control
 var tween: Tween
 
 func _ready():
-	# Get references to nodes
-	var start_button = $CenterContainer/VBoxContainer/StartButton
-	var logo = $CenterContainer/VBoxContainer/Logo
+	# Fix node paths
+	var start_button = $Background/CenterContainer/Logo/MarginContainer/StartButton
+	var load_button = $Background/CenterContainer/Logo/MarginContainer/StartButton/LoadButton
+	var logo = $Background/CenterContainer/Logo
 	
-	# Style the button
-	var style = StyleBoxFlat.new()
-	style.set_bg_color(Color("3498db"))  # Blue background
-	style.set_corner_radius_all(10)  # Rounded corners
-	
-	# Apply button styles
-	start_button.add_stylebox_override("normal", style)
-	start_button.add_color_override("font_color", Color.white)
-	
-	# Connect button signals
+	# Connect signals
+	start_button.connect("pressed", self, "_on_StartButton_pressed")
 	start_button.connect("mouse_entered", self, "_on_button_hover")
 	start_button.connect("mouse_exited", self, "_on_button_normal")
+	load_button.connect("pressed", self, "_on_LoadButton_pressed")
+	
+	# ... rest of the code ...
+
 	
 	# Initialize tween
 	tween = Tween.new()
